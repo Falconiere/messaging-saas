@@ -2,16 +2,13 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-
 // Entities
-import { User } from './users/users.entity';
-import { Message } from './messages/messages.entity';
+import { User } from './modules/users/users.entity';
+import { Message } from './modules/messages/messages.entity';
 
 // modules
-import { UsersModule } from './users/users.module';
-import { MessagesModule } from './messages/messages.module';
+import { UsersModule } from './modules/users/users.module';
+import { MessagesModule } from './modules/messages/messages.module';
 
 @Module({
   imports: [
@@ -28,8 +25,6 @@ import { MessagesModule } from './messages/messages.module';
     UsersModule,
     MessagesModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {
   constructor(private connection: Connection) {}
