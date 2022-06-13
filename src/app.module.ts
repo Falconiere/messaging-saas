@@ -7,7 +7,11 @@ import { AppService } from './app.service';
 
 // Entities
 import { User } from './users/users.entity';
+import { Message } from './messages/messages.entity';
+
+// modules
 import { UsersModule } from './users/users.module';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
   imports: [
@@ -18,10 +22,11 @@ import { UsersModule } from './users/users.module';
       username: 'root',
       password: 'rootpwd',
       database: 'messaging_db',
-      entities: [User],
+      entities: [User, Message],
       synchronize: true,
     }),
     UsersModule,
+    MessagesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
